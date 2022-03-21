@@ -96,13 +96,11 @@ def foo():
         speak(query1)
         # r.pause_threshold=1
 
-        if query1.startswith(query1) :     
-            speak(f"{query1} opening in browser")
-            # result=query1.split(" ")
-            
-            webbrowser.open(f"{query1}.com")
-            # os.system(f"start chrome {query1}.com")
-
+        if query.lower().startswith("open") and "." in query.lower():
+            res = query.split()
+            print(res[1:])
+            res = res[1:]
+            webbrowser.open(f"{' '.join(res)}")
         
 
             
