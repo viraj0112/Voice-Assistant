@@ -1,10 +1,10 @@
 # Sky Assistant 🔥🔥
 
 - **What can it do as of now ?**
-> It can greet the users ✔️
-> Browse the net 🖥️
-> Stream ad-free youtube videos 📺
-> Do basic image manipulation like blurring an image 🖼️
+> - It can greet the users ✔️
+> - Browse the net 🖥️
+> - Stream ad-free youtube videos 📺
+> - Do basic image manipulation like blurring an image 🖼️
 
 - **Things to improve:**
 > - Add more image manipulation options 📷
