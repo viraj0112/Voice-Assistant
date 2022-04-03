@@ -1,4 +1,4 @@
-# Sky Assistant 🔥🔥
+# Voice Assistant 🔥🔥
 
 - **What can it do as of now ?**
 > - It can greet the users ✔️
