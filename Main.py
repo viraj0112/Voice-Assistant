@@ -1,9 +1,4 @@
-
-from distutils.log import error
-from unittest import result
 from winsound import PlaySound
-
-from setuptools import Command
 import speech_recognition as sr
 import wikipedia, os, datetime, pyttsx3, webbrowser, keyboard, pyjokes,sys
 from tkinter import *
@@ -101,21 +96,57 @@ def hearme():
             os.system(f"start {' '.join(res).lower()}")
 
         elif query.lower().startswith('edit'):
-            res = query.split()
-            res = res[1:]
-            res = " ".join(res)
-            # for i in os.listdir("\Users\itse\Pictures"):
-            for i in os.listdir("C:\\Users\\Viraj Sawant\\Pictures\\Screenshots"):
-                if i.endswith((".jpeg", ".jpg", ".png")):
-                    stmt = i.split(".")
-                    if res == stmt[0].lower():
-                        im = Image.open("C:\\Users\\Viraj Sawant\\Pictures\\Screenshots"+str(i))
-                        filtered_image = im.filter(ImageFilter.BLUR)
-                        im = Image.open("C:\\Users\\Viraj Sawant\\Pictures\\Screenshots"+ str(i))
-                        filtered_image = ImageOps.grayscale(im)
-                        filtered_image.save("edited_"+i, 'JPEG')
-                        filtered_image.show()
-                        print(i)
+            speak("Do you want to blurr, grayscale or resize :")
+            choice = r.recognize_google(audio,language='en-in')
+            if ("blur" or "blurr") in choice:
+                res = query.split()
+                res = res[1:]
+                res = " ".join(res)
+                # for i in os.listdir("\Users\itse\Pictures"):
+                for i in os.listdir("C:\\Users\\Viraj Sawant\\Pictures\\Screenshots"):
+                    if i.endswith((".jpeg", ".jpg", ".png")):
+                        stmt = i.split(".")
+                        if res == stmt[0].lower():
+                            im = Image.open("C:\\Users\\Viraj Sawant\\Pictures\\Screenshots"+str(i))
+                            filtered_image = im.filter(ImageFilter.BLUR(5))
+                            filtered_image.show()
+                            print(i)
+
+            elif "grayscale" in choice:
+                res = query.split()
+                res = res[1:]
+                res = " ".join(res)
+                # for i in os.listdir("\Users\itse\Pictures"):
+                for i in os.listdir("C:\\Users\\Viraj Sawant\\Pictures\\Screenshots"):
+                    if i.endswith((".jpeg", ".jpg", ".png")):
+                        stmt = i.split(".")
+                        if res == stmt[0].lower():
+                            im = Image.open("C:\\Users\\Viraj Sawant\\Pictures\\Screenshots"+ str(i))
+                            filtered_image = ImageOps.grayscale(im)
+                            filtered_image.save("edited_"+i, 'JPEG')
+                            filtered_image.show()
+                            print(i)
+
+            if ("resize" or "resizing") in choice:
+                res = query.split()
+                res = res[1:]
+                res = " ".join(res)
+                # for i in os.listdir("\Users\itse\Pictures"):
+                for i in os.listdir("C:\\Users\\Viraj Sawant\\Pictures\\Screenshots"):
+                    if i.endswith((".jpeg", ".jpg", ".png")):
+                        stmt = i.split(".")
+                        if res == stmt[0].lower():
+                            im = Image.open("C:\\Users\\Viraj Sawant\\Pictures\\Screenshots"+ str(i))
+                            speak("Please tell the x dimension")
+                            x = r.recognize_google(audio,language='en-in')
+
+                            speak("Please tell the y dimensions")
+                            y = r.recognize_google(audio,language='en-in')
+
+                            filtered_image = image.resize((x,y))
+                            filtered_image.save("edited_"+i, 'JPEG')
+                            filtered_image.show()
+                            print(i)
         
 
         elif query.lower() in ["kill", "quit", "stop", "exit"]:
@@ -144,13 +175,6 @@ def main_screen():
     microphone_button = Button(image=microphone_photo,command=hearme, borderwidth = 0)
     microphone_button.pack(pady=10)
 
-    # image=Image.open("mic.png")
-    # resize_image=image.resize((20,30))
-    # img=ImageTk.PhotoImage(resize_image)
-    # label1=Label(image=img)
-    # label1.image=img
-    # label1.pack()
-
 
     settings_photo = PhotoImage(file = "setting.gif")
     settings_button = Button(image = settings_photo, borderwidth = 0)
@@ -166,9 +190,5 @@ def main_screen():
 keyboard.add_hotkey("F4",hearme)
 
 
-
 if __name__ == "__main__":
     main_screen()
-    
-   
-   
